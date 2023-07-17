@@ -30,15 +30,22 @@ def get_data_splits(df):
     """
     #specifying data splits
     df_full_train, df_test = train_test_split(df, test_size=0.2, random_state=42)
+    # df_train, df_val = train_test_split(df_full_train, test_size=0.25, random_state=42)
 
     y_full_train = df_full_train['Exited'].values
+    # y_train = df_train['Exited'].values
+    # y_val = df_val['Exited'].values
     y_test = df_test['Exited'].values
 
     del df_full_train['Exited']
+    # del df_train['Exited']
+    # del df_val['Exited']
     del df_test['Exited']
 
     #converting data splits into arrays 
     X_full_train = df_full_train.to_numpy()
+    # X_train = df_train.to_numpy()
+    # X_val = df_val.to_numpy()
     X_test = df_test.to_numpy()
 
     return X_full_train, y_full_train, X_test, y_test
