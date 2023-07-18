@@ -96,7 +96,7 @@ def train_xgb_model(X_train, X_test, y_train, y_test):
         mlflow.end_run()
         return xgb_score
 
-@flow
+@flow(name="churn_pred")
 def main_flow(csv_path):
 
     mlflow.set_tracking_uri("http://127.0.0.1:5000")
