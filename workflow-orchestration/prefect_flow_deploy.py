@@ -109,8 +109,7 @@ def main_flow(csv_path):
     X_train, y_train, X_test, y_test = get_data_splits(df)
     train_xgb_model(X_train, X_test, y_train, y_test)
 
-if __name__ == "__main__":
-        main_flow(csv_path="../data/bank-customers/Churn Modeling.csv")
+main_flow("../data/bank-customers/Churn Modeling.csv")
 
 
 
