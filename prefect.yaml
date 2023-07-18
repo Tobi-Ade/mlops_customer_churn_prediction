@@ -14,10 +14,8 @@ push: null
 
 # pull section allows you to provide instructions for cloning this project in remote locations
 pull:
-- prefect.deployments.steps.git_clone:
-    repository: https://github.com/Tobi-Ade/mlops_customer_churn_prediction.git
-    branch: dev-env
-    access_token: null
+- prefect.deployments.steps.set_working_directory:
+    directory: /home/ubuntu/mlops-project/mlops_customer_churn_prediction
 
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
