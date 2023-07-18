@@ -1,3 +1,4 @@
 {
+  "churn_pred": "workflow-orchestration/prefect_flow_deploy.py:main_flow",
   "main-flow": "workflow-orchestration/prefect_flow_deploy.py:main_flow"
 }
