@@ -97,7 +97,7 @@ def train_xgb_model(X_train, X_test, y_train, y_test):
         return xgb_score
 
 @flow(name="churn_pred")
-def main_flow(csv_path="data/bank-customers/Churn Modeling.csv"):
+def main_flow(csv_path):
 
     mlflow.set_tracking_uri("http://127.0.0.1:5000")
     mlflow.set_experiment("mlops-project")
@@ -110,7 +110,7 @@ def main_flow(csv_path="data/bank-customers/Churn Modeling.csv"):
     train_xgb_model(X_train, X_test, y_train, y_test)
 
 if __name__ == "__main__":
-    main_flow()
+    main_flow(csv_path="data/bank-customers/Churn Modeling.csv")
 
 
 
