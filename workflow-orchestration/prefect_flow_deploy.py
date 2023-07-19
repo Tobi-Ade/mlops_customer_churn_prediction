@@ -97,12 +97,12 @@ def train_xgb_model(X_train, X_test, y_train, y_test):
         return xgb_score
 
 @flow(name="churn_pred")
-def main_flow(csv_path):
+def main_flow(csv_path="data/bank-customers/Churn Modeling.csv"):
 
     mlflow.set_tracking_uri("http://127.0.0.1:5000")
     mlflow.set_experiment("mlops-project")
     
-    df = read_data(csv_path)
+    df = read_data(csv_path="data/bank-customers/Churn Modeling.csv")
     df.Gender.replace(["Female", "Male"], [0, 1], inplace=True)
     df.drop(columns=["RowNumber", "CustomerId", "Surname", "Geography"], inplace=True)
 
@@ -110,7 +110,7 @@ def main_flow(csv_path):
     train_xgb_model(X_train, X_test, y_train, y_test)
 
 if __name__ == "__main__":
-    main_flow("data/bank-customers/Churn Modeling.csv")
+    main_flow()
 
 
 
