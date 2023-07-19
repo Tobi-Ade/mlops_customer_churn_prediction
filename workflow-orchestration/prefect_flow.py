@@ -87,17 +87,17 @@ def train_xgb_model(X_train, X_test, y_train, y_test):
 
         print(xgb_score)
 
-        with open("../models/preprocessor.b", "wb") as f_out:
+        with open("models/preprocessor.b", "wb") as f_out:
             pickle.dump(dmatrix, f_out)
         
-        mlflow.log_artifact("../models/preprocessor.b", artifact_path="preprocessor")
+        mlflow.log_artifact("models/preprocessor.b", artifact_path="preprocessor")
 
         mlflow.xgboost.log_model(xgb_clf, artifact_path="model_artifact")
         mlflow.end_run()
         return xgb_score
 
 @flow
-def main(csv_path="../data/bank-customers/Churn Modeling.csv"):
+def main(csv_path="data/bank-customers/Churn Modeling.csv"):
 
     mlflow.set_tracking_uri("http://127.0.0.1:5000")
     mlflow.set_experiment("mlops-project")

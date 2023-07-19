@@ -87,10 +87,10 @@ def train_xgb_model(X_train, X_test, y_train, y_test):
 
         print(xgb_score)
 
-        with open("../models/preprocessor.b", "wb") as f_out:
+        with open("models/preprocessor.b", "wb") as f_out:
             pickle.dump(dmatrix, f_out)
         
-        mlflow.log_artifact("../models/preprocessor.b", artifact_path="preprocessor")
+        mlflow.log_artifact("models/preprocessor.b", artifact_path="preprocessor")
 
         mlflow.xgboost.log_model(xgb_clf, artifact_path="model_artifact")
         mlflow.end_run()
@@ -109,7 +109,7 @@ def main_flow(csv_path):
     X_train, y_train, X_test, y_test = get_data_splits(df)
     train_xgb_model(X_train, X_test, y_train, y_test)
 
-main_flow("../data/bank-customers/Churn Modeling.csv")
+main_flow("data/bank-customers/Churn Modeling.csv")
 
 
 
