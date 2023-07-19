@@ -102,7 +102,7 @@ def main_flow(csv_path="data/bank-customers/Churn Modeling.csv"):
     mlflow.set_tracking_uri("http://127.0.0.1:5000")
     mlflow.set_experiment("mlops-project")
     
-    df = read_data(csv_path="data/bank-customers/Churn Modeling.csv")
+    df = read_data(csv_path)
     df.Gender.replace(["Female", "Male"], [0, 1], inplace=True)
     df.drop(columns=["RowNumber", "CustomerId", "Surname", "Geography"], inplace=True)
 
