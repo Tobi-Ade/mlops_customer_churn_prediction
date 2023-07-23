@@ -12,8 +12,8 @@ with open("../models/xgb.bin", "rb") as model_in:
 
 def df_from_json(data):
     """
-    create dataframe from csv file
-    params:csv file 
+    create dataframe from data
+    params: json object
     returns: pandas dataframe 
     """
     df = pd.DataFrame([data])
@@ -32,12 +32,17 @@ def prep_data(df):
     return df
 
 def get_prediction(data, preprocessor, model):
+    """
+    takes data, dmatrix preprocessor, and xgboost model,
+    generate prediction for the data
+    returns: predicition
+    rtype: float
+    """
         
     prepped_data = preprocessor(data)
-    # reshaped_prepped_data = prepped_data.reshape(1, -1)
     prediction = model.predict(prepped_data)
 
-    return prediction
+    return prediction[0]
     
 
 app = Flask("churn-prediction")
@@ -51,7 +56,7 @@ def run_model():
     #  print(data)
      prepped_data = prep_data(data)
     #  print(f"prepped_data\n {prepped_data}")
-     prediction = get_prediction(prepped_data, preprocessor, model)[0]
+     prediction = get_prediction(prepped_data, preprocessor, model)
      churn_decision = (prediction >= 0.5)
     #  print(f"prediction\n {churn_decision}")
 
