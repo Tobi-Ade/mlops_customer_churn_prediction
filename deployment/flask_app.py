@@ -1,26 +1,10 @@
 #import libraries
 import pickle
-import mlflow
 import pandas as pd
 from flask import Flask, jsonify, request
-from mlflow.tracking import MlflowClient
 
-
-mlflow_tracking_uri = "http://127.0.0.1:5000"
-run_id = "bab89874b0a54c38a20cdb29f5cc4de7"
-mlflow.set_tracking_uri(mlflow_tracking_uri)
-
-client = MlflowClient(tracking_uri=mlflow_tracking_uri)
-client.download_artifacts(run_id=run_id, path='preprocessor', dst_path='.')
-
-with open("preprocessor/preprocessor.b", "rb") as f_in:
-    preprocessor = pickle.load(f_in)
-
-# Load model as a PyFuncModel.
-logged_model = f'runs:/{run_id}/model'
-# model = mlflow.pyfunc.load_model(logged_model)
-model = mlflow.xgboost.load_model(logged_model)
-
+with open("xgb.bin", "rb") as model_in:
+        model, preprocessor = pickle.load(model_in)
 
 def df_from_json(data):
     """
