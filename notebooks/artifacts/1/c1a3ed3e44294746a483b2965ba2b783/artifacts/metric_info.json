@@ -1,0 +1,3 @@
+{
+  "roc_auc_score_X_test": "roc_auc_score(y_true=y_test, y_score=y_pred_lr)"
+}
