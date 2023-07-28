@@ -1,54 +1,41 @@
 version: '3.7'
 
-volumes:
-    # prometheus_data: {}
-    grafana_data: {}
+volumes: 
+  grafana_data: {}
 
 networks:
   front-tier:
   back-tier:
 
 services:
-  db: 
-    image: postgres 
+  db:
+    image: postgres
     restart: always
     environment:
       POSTGRES_PASSWORD: 1234
-    ports: 
+    ports:
       - "5432:5432"
     networks:
       - back-tier
-      
-  adminer: 
-    image: adminer 
+
+  adminer:
+    image: adminer
     restart: always
     ports:
       - "8080:8080"
     networks:
       - back-tier
-      - front-tier
-
-    # prometheus:
-    #   image: prom/prometheus
-    #   volumes:
-    #     - ./evidently_service/config/prometheus.yml:/etc/prometheus/prometheus.yml
-    #     - prometheus_data:/prometheus
-    #   command:
-    #     - '--config.file=/etc/prometheus/prometheus.yml'
-    #     - '--storage.tsdb.path=/prometheus'
-    #   ports:
-    #     - "9091:9090"
-    #   networks:
-    #     - back-tier
-    #   restart: always
+      - front-tier  
 
   grafana:
     image: grafana/grafana
     user: "472"
     ports:
       - "3000:3000"
-    # volumes:
-    #   - ./g/config/grafana_datasources.yaml:/etc/grafana/provisioning/datasources/datasource.yaml:ro
+    volumes:
+      # - ./config/grafana_datasources.yaml:/etc/grafana/provisioning/datasources/datasource.yaml:ro
+      - ./config/grafana_dashboards.yaml:/etc/grafana/provisioning/dashboards/dashboards.yaml:ro
+      - ./dashboards:/opt/grafana/dashboards
     networks:
       - back-tier
       - front-tier
