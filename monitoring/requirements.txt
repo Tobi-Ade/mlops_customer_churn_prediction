@@ -1,0 +1,13 @@
+scikit-learn
+dataclasses
+Flask
+pandas
+Werkzeug
+requests
+prometheus_client
+pyyaml
+tqdm
+pyarrow
+prefect
+pymongo
+evidently
