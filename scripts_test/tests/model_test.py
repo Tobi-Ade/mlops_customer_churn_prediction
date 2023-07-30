@@ -1,4 +1,4 @@
-from scripts_test import flask_app
+from scri import test_web_service
 
 import pandas as pd
 
@@ -19,7 +19,7 @@ df = pd.DataFrame([data])
 def test_df_from_json():
     
 
-    actual_result = flask_app.df_from_json(data)
+    actual_result = test_web_service.df_from_json(data) 
 
     expected_result = ['CreditScore', 'Gender', 'Age', 'Tenure', 'Balance', 'NumOfProducts', 
                        'HasCrCard', 'IsActiveMember', 'EstimatedSalary']
@@ -28,7 +28,7 @@ def test_df_from_json():
 
 def test_prep_data():
     
-    actual_result = flask_app.prep_data(df)
+    actual_result = test_web_service.prep_data(df)
 
     expected_result = 'male'
 
@@ -37,10 +37,9 @@ def test_prep_data():
 
 def test_apply_prep_data():
 
-    actual_result = flask_app.apply_prep_data(df)
+    actual_result = test_web_service.apply_prep_data(df)
 
     expected_result = 1
 
     assert actual_result == expected_result
     
-
