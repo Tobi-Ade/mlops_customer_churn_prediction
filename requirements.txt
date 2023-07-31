@@ -1,0 +1,7 @@
+numpy 
+flask
+pandas==1.5.3
+scikit-learn 
+seaborn==0.12.2
+waitress==2.1.2
+xgboost==1.7.6
