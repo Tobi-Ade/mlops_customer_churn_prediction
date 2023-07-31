@@ -1,13 +1,18 @@
+
+
+
+# default: run
+
+# run:
+# 	python $(script) 
+
+automate: test integration-test flask-app
+
 test:
 	pytest tests/
 
-integration-test: test 
-	pytest integration-test
+integration-test: 
+	pytest integration-test/
 
-script = flask_app.py 
-
-
-default: run
-
-run:
-	python $(script)
+flask-app:
+	python flask_app.py 
