@@ -9,8 +9,8 @@
 4. [References](#References)
 5. [Contact Me](#contact-me)
 
-## Problem Definiton 
-It is a common occurrence for bank customers to default to other banks. This project involves exoploring the data of bank customers and try to establish churning patterns, and then use the knowledge gained to predict churn for other customers. Then we turn our solution into a full mlops project to automate and continually optimize the entire process <br>
+## Problem Definition 
+It is a common occurrence for bank customers to default to other banks. This project involves exploring the data of bank customers and try to establish churning patterns, and then use the knowledge gained to predict churn for other customers. Then we turn our solution into a full mlops project to automate and continually optimize the entire process <br>
 
 More information on the data used for this project can be found [here](https://www.kaggle.com/datasets/santoshd3/bank-customers)
 
